@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior:smooth;
+    font-family:'JetBrains Mono';
+}
+header{
+    z-index: 999;
+    padding: 15px 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed ;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.logo{
+    padding: 10px 20px;
+    border-radius: 25px; 
+    transition-duration: 2s;  
+ }
+.logo:hover{
+    transform: scale(1.1);
+}
+.logo a{
+    text-decoration: none;
+    font-size: 1.9em;
+    font-weight: 800;
+    font-style:italic;
+    color: white;
+}
+.sou{
+    color: red;
+    text-shadow:0px 5px 25px rgb(255, 255, 255);
+}
+.nav{
+    padding-right: 15px;
+}
+.nav ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    transition-duration: 2s;
+}
+.nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 800;
+    font-style:italic;
+}
+.nav ul li:hover{
+    transform: scale(1.1);
+}
+section{
+    padding-top: 18%;
+    padding-left: 5%;
+    height: 100vh;
+    align-items: center;
+    padding-bottom: 35px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.main{
+    background-image:url(bg1.jpg);
+}
+.container{
+    width: 100%;
+    min-height: 50vh;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: -5%;
+}
+.intro{
+    background-color: rgb(0, 0, 0,0.5);
+    padding: 30px 30px;
+    width: fit-content;
+    border-radius: 25px;
+    height: fit-content;
+    transition-duration: 2s;   
+    box-shadow:0 5px 25px rgba(255, 255, 255, 0.3);
+}
+.intro:hover{
+    transform: scaleX(1.1);
+}
+.im{
+    height:1%;
+    width:35%;
+    padding-right: 13%;
+    transform-style: flat; 
+ }
+.im img{
+    height:100%;
+    width: 100%;
+    border-radius: 75px;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    box-shadow:0 5px 25px rgba(255, 255, 255, 0.3);
+    transition-duration:8s;
+    
+}
+.im img:hover{
+    transform:scale(1.1);
+}
+.intro p {
+    padding: 15px 0;
+    font-style: italic;
+    font-size: 0.9em;
+    font-weight: 300;
+    color:white;
+}
+.btn{
+    padding: 10px 10px;
+    margin-top: 25px;
+    background-color: firebrick;
+    border-radius: 15px;
+    width: fit-content;
+    transition-duration: 2s;
+}  
+.btn a{
+    text-decoration: none;
+    font-size: 0.8em;
+    color: white;
+    font-style: italic;}
+.btn:hover{
+    transform: scale(1.1);
+}
+.second{
+    background-image: url(bg2.jpg);
+}
+.final{
+    background-image: url(bg3.jpg);
+}
+fieldset{
+    background-color: rgb(0, 0, 0,0.5);
+    width: fit-content;
+    padding: 25px;
+    border-radius: 25px;
+    border: 0;
+    margin-right:150px;
+    transition-duration: 2s;
+    box-shadow:0 5px 25px rgba(255, 255, 255, 0.3);;
+}
+fieldset:hover{
+    transform: scaleX(1.1);
+}
+label{
+    color: white;
+    font-size: large;
+    font-style: italic;
+    font-size: 1.2em;
+    font-weight: 300;
+    width: 125px;
+    display: inline-block;
+}
+input{
+    border: 0;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255,0.2);
+    font-size: medium;
+    margin: 10px 0;
+    color: #fff;
+}

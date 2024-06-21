@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="icon" href="sofien.jpg">
+    <link rel="stylesheet" href="style.css">
+    <script src="controle.js"></script>
+    <title>Sofien Ghorbel</title>
+</head>
+<body >
+    <header>
+        <div class="logo">
+            <a href="#Home">
+                <span class="sou">S</span>ofien <span class="sou">G</span>horbel
+            </a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#Home"><span class="sou">H</span>ome</a></li>
+                <li><a href="#About"><span class="sou">A</span>bout</a></li>
+                <li><a href="#Contact"><span class="sou">C</span>ontact</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="main" id="Home">
+    <div class="container">
+        <div class="intro">
+            <p>
+               Hi , I'm <span class="sou">S</span>ofien
+                <span class="sou">G</span>horbel
+            </p>
+            <p>
+                I'm a computer science student 
+            </p>
+            <p >
+                <span class="sou">A</span>nd
+                I want to be in the future a <span class="sou">engineer</span> 
+            </p>
+            <div class="btn">
+                <a href="#About">About Me</a> 
+            </div>
+        </div>
+        <div class="im">
+            <img src="sofien_1.jpg">
+        </div>
+    </div>
+    </section>
+    <section class="second"id="About">
+        <div class="container">
+            <div class="intro">
+                <p>
+                    I was born in Sfax
+                </p>
+                <p>
+                    On 23th of July 2004 
+                </p>
+                <p>
+                    <span class="sou">A</span>nd
+                    I love music
+                </p>
+            </div>
+            <div class="im">
+                <img src="sofien.jpg">
+            </div>
+        </div>
+    </section>
+    <section class="final" id="Contact">
+        <div class="container">
+            <div class="intro">
+                <p>
+                    If you want to contact me
+                </p>
+                <p>
+                    Send you information
+                </p>
+                <p>
+                    And i will get back to you 
+                </p>
+            </div>
+                <form action="sofien.php" method="post" onsubmit="return verif()">
+                    <fieldset>
+                        <div>
+                            <label  for="first">First name</label>
+                            <input type="text" name="fn" id="fn">
+                        </div>
+                        <div>
+                            <label  for="second">Last  name</label>
+                            <input type="text" name="ln" id="ln">
+                        </div>
+                        <div>
+                            <label for="last">Email      </label> 
+                            <input type="text" name="email" id="email">
+                        </div>
+                        <div>
+                            <input class="btn" type="submit" value="Send">
+                            <input class="btn" type="reset" value="Cancel">
+                        </div>
+                    </fieldset>
+                </form>
+        </div>
+    </section>
+</body>
+</html>
