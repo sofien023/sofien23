@@ -2,6 +2,7 @@ http = require('http');
 
 server = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write("good luck")
     res.end('Hello World\n');
 });
 
