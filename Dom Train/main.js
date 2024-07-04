@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     container.classList.add("container");
 
     const textElement1 = document.createElement('p');
-    textElement1.textContent = "Give the number of Questions :";
+    textElement1.textContent = "Give the number of Questions equal to or under 20 ☺ :";
     textElement1.classList.add("text");
     container.appendChild(textElement1);
 
     const xValueElement = document.createElement('p');
-    xValueElement.textContent = "equal to or under 20 ☺ ";
+    xValueElement.textContent = "Welcome";
     xValueElement.classList.add("text");
     container.appendChild(xValueElement);
 
@@ -28,17 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(container);
 
+    let timeout;
     inputElement.addEventListener('input', function (event) {
+        clearTimeout(timeout);
         const inputValue = event.target.value.trim();
         const numericInputValue = Number(inputValue);
+
         if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
             textElement2.textContent = "Give A Correct Value";
         } else {
             textElement2.textContent = "... ☺";
-            setTimeout(function () {
+            timeout = setTimeout(function () {
                 container.remove();
                 createComponent(0, numericInputValue);
-            }, 1500);
+            }, 3000); // 3-second delay
         }
     });
 
