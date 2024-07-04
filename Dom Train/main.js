@@ -1,5 +1,6 @@
 document.title = "SimpleExam";
 function newgame(){
+    var score =0;
     document.addEventListener("DOMContentLoaded", function () {
         const container = document.createElement("div");
         container.classList.add("container");
@@ -40,14 +41,13 @@ function newgame(){
                 textElement2.textContent = "... ☺";
                 timeout = setTimeout(function () {
                     container.remove();
-                    createComponent(0, numericInputValue);
+                    createComponent(0, numericInputValue,score);
                 }, 3000); // 3-second delay
             }
         });
 }
 )}
-    function createComponent(index, x) {
-        let score =0;
+function createComponent(index, x,score) {
 
         if (index >= x) {
             result(score);
@@ -72,6 +72,7 @@ function newgame(){
         xValueElement.classList.add("text");
         container.appendChild(xValueElement);
 
+
         const inputElement = document.createElement('input');
         inputElement.setAttribute('type', 'text');
         inputElement.setAttribute('placeholder', 'Enter the answer...');
@@ -90,11 +91,11 @@ function newgame(){
             if (inputValue === "" || isNaN(numericInputValue)) {
                 textElement2.textContent = `${st} * ${k}`;
             } else if (numericInputValue === answer) {
-                textElement2.textContent = "... ☺";
                 score = score + 1;
+                textElement2.textContent = "... ☺";
                 setTimeout(function () {
                     container.remove();
-                    createComponent(index + 1, x);
+                    createComponent(index + 1, x,score);
                 }, 1500);
             } else if (numericInputValue > answer) {
                 textElement2.textContent = "choose a lower number";
@@ -102,11 +103,9 @@ function newgame(){
                 textElement2.textContent = "choose a higher number";
             }
         });
-
         document.body.appendChild(container);
         
-        
-    }
+}
 
 function result(score){
     const container = document.createElement("div");
@@ -137,4 +136,5 @@ function result(score){
     document.body.appendChild(container);
 
 }
+
 newgame();
