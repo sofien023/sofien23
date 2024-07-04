@@ -12,12 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
         container.style.backgroundColor = "#f9f9f9";
 
         var textElement1 = document.createElement('p');
-        textElement1.textContent = "Hello everyone ☻";
+        textElement1.textContent = `Question N : ${i}`;
         textElement1.classList.add("text");
         container.appendChild(textElement1);
 
-        var st=Math.floor(Math.random() * 10);
+        var st=Math.floor(Math.random()*3)* Math.floor(Math.random()*10)+i+1;
 
+        k= Math.floor(Math.random()*3)* Math.floor(Math.random()*3)+1+st;
         var xValueElement = document.createElement('p');
         xValueElement.textContent = `x = ${st}`;
         xValueElement.classList.add("text");
@@ -25,21 +26,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var inputElement = document.createElement('input');
         inputElement.setAttribute('type', 'text');
-        inputElement.setAttribute('placeholder', 'Enter text...');
+        inputElement.setAttribute('placeholder', 'Enter The answer...');
         inputElement.classList.add("input");
         container.appendChild(inputElement);
 
-        answer= 5;
+        answer= st * k ;
         var textElement2 = document.createElement('p');
-        textElement2.textContent = "empty text";
+        textElement2.textContent = `${st} * ${k}`;
         textElement2.classList.add("text");
         container.appendChild(textElement2);
         inputElement.addEventListener('input', (function(textElement2) {
             return function(event) {
                 if (event.target.value.trim() === "") {
-                    textElement2.textContent = "empty text";
-                } else {
-                    textElement2.textContent = event.target.value;
+                    textElement2.textContent = `${st} * ${k}`;
+                } else if (Number(event.target.value.trim()) === answer) {
+                    textElement2.textContent = "... ☺";
+                }
+                else if (Number(event.target.value.trim())> answer) {
+                    textElement2.textContent = "choose a lower number";
+                }
+                else {
+                    textElement2.textContent = "choose a higher number";
                 }
             };
         })(textElement2));
@@ -48,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
         buttonElement.setAttribute('value', 'Send');
         buttonElement.classList.add("button");
         container.appendChild(buttonElement);
+        buttonElement.style.padding= '5px';
 
         buttonElement.addEventListener('click', function() {
             alert("Thank you!");
