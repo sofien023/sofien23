@@ -1,5 +1,5 @@
 document.title = "SimpleExam";
-
+let score =0;
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.createElement("div");
     container.classList.add("container");
@@ -40,16 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
             textElement2.textContent = "... ☺";
             timeout = setTimeout(function () {
                 container.remove();
-                createComponent(0, numericInputValue);
+                createComponent(0, numericInputValue,score);
             }, 3000); // 3-second delay
         }
     });
 
     function createComponent(index, x) {
         if (index >= x) {
-            alert("Thank you!");
+            result(score);
             return;
         }
+
 
         const container = document.createElement("div");
         container.classList.add("container");
@@ -87,9 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 textElement2.textContent = `${st} * ${k}`;
             } else if (numericInputValue === answer) {
                 textElement2.textContent = "... ☺";
+                score = score + 1;
                 setTimeout(function () {
                     container.remove();
-                    createComponent(index + 1, x);
+                    createComponent(index + 1, x,score);
                 }, 1500);
             } else if (numericInputValue > answer) {
                 textElement2.textContent = "choose a lower number";
@@ -99,5 +101,34 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         document.body.appendChild(container);
+        
+        
     }
 });
+function result(score){
+    const container = document.createElement("div");
+    container.classList.add("container");
+
+    const textElement1 = document.createElement('p');
+    textElement1.textContent = "Her is you result:";
+    textElement1.classList.add("text");
+    container.appendChild(textElement1);
+
+    const xValueElement = document.createElement('p');
+    xValueElement.textContent = "You're amazing";
+    xValueElement.classList.add("text");
+    container.appendChild(xValueElement);
+
+    const inputElement = document.createElement('p');
+    inputElement.textContent = `Her is you result = ${score}`;
+    container.appendChild(inputElement);
+    inputElement.focus();
+
+    const textElement2 = document.createElement('p');
+    textElement2.textContent = "Enjoy";
+    textElement2.classList.add("text");
+    container.appendChild(textElement2);
+
+    document.body.appendChild(container);
+
+}
