@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
         textElement1.classList.add("text");
         container.appendChild(textElement1);
 
+        var st=Math.floor(Math.random() * 10);
+
         var xValueElement = document.createElement('p');
-        xValueElement.textContent = `x equals ${x * i}`;
+        xValueElement.textContent = `x = ${st}`;
         xValueElement.classList.add("text");
         container.appendChild(xValueElement);
 
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         inputElement.classList.add("input");
         container.appendChild(inputElement);
 
+        answer= 5;
         var textElement2 = document.createElement('p');
         textElement2.textContent = "empty text";
         textElement2.classList.add("text");
