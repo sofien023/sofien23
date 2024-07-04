@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let x;
     do {
-        x = prompt("Give the number of components:");
+        x = prompt("Give the number of components equal or under 20 ☺ :");
         x = Number(x);
     } while (x === null || isNaN(x) || x < 0 || x > 20);
     
