@@ -36,6 +36,7 @@ document.title = "SimpleExam";
                 inputElement.setAttribute('placeholder', 'Enter the answer...');
                 inputElement.classList.add("input");
                 container.appendChild(inputElement);
+                inputElement.focus();
 
                 const textElement2 = document.createElement('p');
                 textElement2.textContent = `${st} * ${k}`;
