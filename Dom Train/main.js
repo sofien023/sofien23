@@ -1,51 +1,54 @@
 document.title = "SimpleExam";
-let score =0;
-document.addEventListener("DOMContentLoaded", function () {
-    const container = document.createElement("div");
-    container.classList.add("container");
-
-    const textElement1 = document.createElement('p');
-    textElement1.textContent = "Give the number of Questions equal to or under 20 ☺ :";
-    textElement1.classList.add("text");
-    container.appendChild(textElement1);
-
-    const xValueElement = document.createElement('p');
-    xValueElement.textContent = "Welcome";
-    xValueElement.classList.add("text");
-    container.appendChild(xValueElement);
-
-    const inputElement = document.createElement('input');
-    inputElement.setAttribute('type', 'text');
-    inputElement.setAttribute('placeholder', 'Give the Number...');
-    inputElement.classList.add("input");
-    container.appendChild(inputElement);
-    inputElement.focus();
-
-    const textElement2 = document.createElement('p');
-    textElement2.textContent = "Enjoy";
-    textElement2.classList.add("text");
-    container.appendChild(textElement2);
-
-    document.body.appendChild(container);
-
-    let timeout;
-    inputElement.addEventListener('input', function (event) {
-        clearTimeout(timeout);
-        const inputValue = event.target.value.trim();
-        const numericInputValue = Number(inputValue);
-
-        if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
-            textElement2.textContent = "Give A Correct Value";
-        } else {
-            textElement2.textContent = "... ☺";
-            timeout = setTimeout(function () {
-                container.remove();
-                createComponent(0, numericInputValue,score);
-            }, 3000); // 3-second delay
-        }
-    });
-
+function newgame(){
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.createElement("div");
+        container.classList.add("container");
+    
+        const textElement1 = document.createElement('p');
+        textElement1.textContent = "Give the number of Questions :";
+        textElement1.classList.add("text");
+        container.appendChild(textElement1);
+    
+        const xValueElement = document.createElement('p');
+        xValueElement.textContent = "equal to or under 20 ☺ ";
+        xValueElement.classList.add("text");
+        container.appendChild(xValueElement);
+    
+        const inputElement = document.createElement('input');
+        inputElement.setAttribute('type', 'text');
+        inputElement.setAttribute('placeholder', 'Give the Number...');
+        inputElement.classList.add("input");
+        container.appendChild(inputElement);
+        inputElement.focus();
+    
+        const textElement2 = document.createElement('p');
+        textElement2.textContent = "Enjoy";
+        textElement2.classList.add("text");
+        container.appendChild(textElement2);
+    
+        document.body.appendChild(container);
+    
+        let timeout;
+        inputElement.addEventListener('input', function (event) {
+            clearTimeout(timeout);
+            const inputValue = event.target.value.trim();
+            const numericInputValue = Number(inputValue);
+    
+            if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
+                textElement2.textContent = "Give A Correct Value";
+            } else {
+                textElement2.textContent = "... ☺";
+                timeout = setTimeout(function () {
+                    container.remove();
+                    createComponent(0, numericInputValue);
+                }, 3000); // 3-second delay
+            }
+        });
+}
+)}
     function createComponent(index, x) {
+        let score =0;
+
         if (index >= x) {
             result(score);
             return;
@@ -91,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 score = score + 1;
                 setTimeout(function () {
                     container.remove();
-                    createComponent(index + 1, x,score);
+                    createComponent(index + 1, x);
                 }, 1500);
             } else if (numericInputValue > answer) {
                 textElement2.textContent = "choose a lower number";
@@ -104,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         
     }
-});
+
 function result(score){
     const container = document.createElement("div");
     container.classList.add("container");
@@ -124,11 +127,14 @@ function result(score){
     container.appendChild(inputElement);
     inputElement.focus();
 
-    const textElement2 = document.createElement('p');
-    textElement2.textContent = "Enjoy";
-    textElement2.classList.add("text");
+    const textElement2 = document.createElement('input');
+    textElement2.setAttribute('type', 'submit');
+    textElement2.value = "Replay";
+    textElement2.onclick = newgame();
+    textElement2.classList.add("button");
     container.appendChild(textElement2);
 
     document.body.appendChild(container);
 
 }
+newgame();
