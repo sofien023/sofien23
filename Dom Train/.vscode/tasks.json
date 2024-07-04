@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "c:\\Users\\sofie\\Documents\\GitHub\\sofien23\\Dom Train",
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server",
+			"group": "build"
+		}
+	]
+}
