@@ -22,7 +22,6 @@ function newgame() {
     inputElement.setAttribute('placeholder', 'Give the Number...');
     inputElement.classList.add("input");
     container.appendChild(inputElement);
-    inputElement.focus();
 
     const textElement2 = document.createElement('p');
     textElement2.textContent = "Enjoy";
@@ -30,6 +29,7 @@ function newgame() {
     container.appendChild(textElement2);
 
     document.body.appendChild(container);
+    inputElement.focus();
 
     let timeout;
     inputElement.addEventListener('input', function (event) {
@@ -77,12 +77,12 @@ function createComponent(index, x, score) {
     inputElement.setAttribute('placeholder', 'Enter the answer...');
     inputElement.classList.add("input");
     container.appendChild(inputElement);
-    inputElement.focus();
 
     const textElement2 = document.createElement('p');
     textElement2.textContent = `${st} * ${k}`;
     textElement2.classList.add("text");
     container.appendChild(textElement2);
+
 
     inputElement.addEventListener('input', function (event) {
         const inputValue = event.target.value.trim();
@@ -104,6 +104,7 @@ function createComponent(index, x, score) {
     });
 
     document.body.appendChild(container);
+    inputElement.focus();
 }
 
 function result(score) {
@@ -123,7 +124,6 @@ function result(score) {
     const resultElement = document.createElement('p');
     resultElement.textContent = `Here is your result = ${score}`;
     container.appendChild(resultElement);
-    resultElement.focus();
 
     const replayButton = document.createElement('input');
     replayButton.setAttribute('type', 'submit');
@@ -131,6 +131,7 @@ function result(score) {
     replayButton.addEventListener('click', newgame);
     replayButton.classList.add("button");
     container.appendChild(replayButton);
+
     document.body.appendChild(container);
 }
 
