@@ -23,25 +23,23 @@ function newgame() {
     inputElement.classList.add("input");
     container.appendChild(inputElement);
 
-    const textElement2 = document.createElement('p');
-    textElement2.textContent = "Enjoy";
-    textElement2.classList.add("text");
-    container.appendChild(textElement2);
+    const submitButton = document.createElement('button');
+    submitButton.textContent = "Submit";
+    submitButton.classList.add("button");
+    container.appendChild(submitButton);
 
     document.body.appendChild(container);
     inputElement.focus();
 
-    let timeout;
-    inputElement.addEventListener('input', function (event) {
-        clearTimeout(timeout);
-        const inputValue = event.target.value.trim();
+    submitButton.addEventListener('click', function () {
+        const inputValue = inputElement.value.trim();
         const numericInputValue = Number(inputValue);
 
         if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
             textElement2.textContent = "Give a Correct Value";
         } else {
             textElement2.textContent = "... ☺";
-            timeout = setTimeout(function () {
+            setTimeout(function () {
                 container.remove();
                 createComponent(0, numericInputValue, score);
             }, 3000);
@@ -83,28 +81,37 @@ function createComponent(index, x, score) {
     textElement2.classList.add("text");
     container.appendChild(textElement2);
 
+    const submitButton = document.createElement('button');
+    submitButton.textContent = "Submit";
+    submitButton.classList.add("button");
+    container.appendChild(submitButton);
 
-    inputElement.addEventListener('input', function (event) {
-        const inputValue = event.target.value.trim();
+    inputElement.focus();
+
+    submitButton.addEventListener('click', function () {
+        const inputValue = inputElement.value.trim();
         const numericInputValue = Number(inputValue);
+
         if (inputValue === "" || isNaN(numericInputValue)) {
             textElement2.textContent = `${st} * ${k}`;
         } else if (numericInputValue === answer) {
-            score += Number(20/x);
-            textElement2.textContent = "... ☺";
-            setTimeout(function () {
-                container.remove();
-                createComponent(index + 1, x, score);
-            }, 3500);
-        } else if (numericInputValue > answer) {
-            textElement2.textContent = "Choose a lower number";
+            score += Math.round(20 / x);
+            textElement2.textContent = "... ☺ ";
         } else {
-            textElement2.textContent = "Choose a higher number";
+            if (numericInputValue > answer) {
+                textElement2.textContent = "Choose a lower number";
+            } else {
+                textElement2.textContent = "Choose a higher number";
+            }
         }
+
+        setTimeout(function () {
+            container.remove();
+            createComponent(index + 1, x, score);
+        }, 3000);
     });
 
     document.body.appendChild(container);
-    inputElement.focus();
 }
 
 function result(score) {
@@ -133,6 +140,7 @@ function result(score) {
     container.appendChild(replayButton);
 
     document.body.appendChild(container);
+    replayButton.focus();
 }
 
 function grade(score) {
@@ -168,5 +176,5 @@ function grade(score) {
             return "Invalid Score";
     }
 }
-document.title = "SimpleExam";
+
 document.addEventListener("DOMContentLoaded", newgame);
