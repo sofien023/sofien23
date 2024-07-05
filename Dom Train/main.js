@@ -122,7 +122,7 @@ function result(score) {
     container.appendChild(xValueElement);
 
     const resultElement = document.createElement('p');
-    resultElement.textContent = `Here is your result = ${score}`;
+    resultElement.textContent = `Here is your score = ${score}`;
     container.appendChild(resultElement);
 
     const replayButton = document.createElement('input');
