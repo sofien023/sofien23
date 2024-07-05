@@ -168,5 +168,5 @@ function grade(score) {
             return "Invalid Score";
     }
 }
-
+document.title = "SimpleExam";
 document.addEventListener("DOMContentLoaded", newgame);
