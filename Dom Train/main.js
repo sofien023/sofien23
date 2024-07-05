@@ -26,24 +26,34 @@ function createComponent(text1, text2) {
             const inputValue = inputElement.value.trim();
             resolve(inputValue);
             container.remove();
-        });});}
+        });
+    });
+}
 async function newgame1() {
     document.body.innerHTML = '';
-    const numberOfQuestions = await createComponent("Give the number of Questions:", "Equal to or under 20 ☺");
-    const x = Number(numberOfQuestions);
-    if (isNaN(x) || x <= 0 || x > 20) {
+    let numberOfQuestions = await createComponent("Give the number of Questions:", "Equal to or under 20 ☺");
+    numberOfQuestions = Number(numberOfQuestions.trim());
+    if (isNaN(numberOfQuestions) || numberOfQuestions <= 0 || numberOfQuestions > 20) {
         newgame1();
-        return;}
+        return;
+    }
     let score = 0;
-    for (let index = 0; index < x; index++) {
+    for (let index = 0; index < numberOfQuestions; index++) {
         const st = Math.floor(Math.random() * 3) * Math.floor(Math.random() * 10) + index + 1;
         const k = Math.floor(Math.random() * 3) * Math.floor(Math.random() * 3) + 1 + st;
         const answer = st * k;
-        const userAnswer = await createComponent(`Question N: ${index + 1}`, `${st} * ${k}`);
-        const numericInputValue = Number(userAnswer.trim());
-        if (numericInputValue === answer) {
-            score += Math.round(20 / x);}}
-    result(score);}
+        let userAnswer = await createComponent(`Question N: ${index + 1}`, `${st} * ${k}`);
+        userAnswer = Number(userAnswer.trim());
+        if (isNaN(userAnswer) || userAnswer === "") {
+            index--; 
+            continue;
+        }
+        if (userAnswer === answer) {
+            score += Math.round(20 / numberOfQuestions);
+        }
+    }
+    result(score);
+}
 function result(score) {
     const container = document.createElement("div");
     container.classList.add("container");
@@ -64,7 +74,8 @@ function result(score) {
     replayButton.addEventListener('click', newgame1);
     replayButton.classList.add("button");
     container.appendChild(replayButton);
-    document.body.appendChild(container);}
+    document.body.appendChild(container);
+}
 function grade(score) {
     switch (true) {
         case score === 0:
@@ -78,5 +89,7 @@ function grade(score) {
         case score > 17 && score < 20:
             return "Excellent!";
         case score === 20:
-            return "Perfect!";}}
+            return "Perfect!";
+    }
+}
 document.addEventListener("DOMContentLoaded", newgame1);
