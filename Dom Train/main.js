@@ -37,13 +37,11 @@ function newgame() {
 
         if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
             textElement2.textContent = "Give a Correct Value";
-        } else {
-            textElement2.textContent = "... ☺";
-            setTimeout(function () {
+        }
                 container.remove();
                 createComponent(0, numericInputValue, score);
-            }, 3000);
-        }
+
+        
     });
 }
 
@@ -86,6 +84,7 @@ function createComponent(index, x, score) {
     submitButton.classList.add("button");
     container.appendChild(submitButton);
 
+    document.body.appendChild(container);
     inputElement.focus();
 
     submitButton.addEventListener('click', function () {
@@ -96,22 +95,11 @@ function createComponent(index, x, score) {
             textElement2.textContent = `${st} * ${k}`;
         } else if (numericInputValue === answer) {
             score += Math.round(20 / x);
-            textElement2.textContent = "... ☺ ";
-        } else {
-            if (numericInputValue > answer) {
-                textElement2.textContent = "Choose a lower number";
-            } else {
-                textElement2.textContent = "Choose a higher number";
-            }
         }
-
-        setTimeout(function () {
             container.remove();
             createComponent(index + 1, x, score);
-        }, 3000);
+    
     });
-
-    document.body.appendChild(container);
 }
 
 function result(score) {
@@ -140,7 +128,6 @@ function result(score) {
     container.appendChild(replayButton);
 
     document.body.appendChild(container);
-    replayButton.focus();
 }
 
 function grade(score) {
