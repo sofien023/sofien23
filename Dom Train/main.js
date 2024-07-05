@@ -32,7 +32,7 @@ async function newgame1() {
     const numberOfQuestions = await createComponent("Give the number of Questions:", "Equal to or under 20 ☺");
     const x = Number(numberOfQuestions);
     if (isNaN(x) || x <= 0 || x > 20) {
-        alert("Invalid number of questions. Please refresh and enter a number between 1 and 20.");
+        newgame1();
         return;}
     let score = 0;
     for (let index = 0; index < x; index++) {
@@ -78,7 +78,5 @@ function grade(score) {
         case score > 17 && score < 20:
             return "Excellent!";
         case score === 20:
-            return "Perfect!";
-        default:
-            return "Invalid Score";}}
+            return "Perfect!";}}
 document.addEventListener("DOMContentLoaded", newgame1);
