@@ -8,12 +8,12 @@ function newgame() {
     container.classList.add("container");
 
     const textElement1 = document.createElement('p');
-    textElement1.textContent = "Give the number of Questions :";
+    textElement1.textContent = "Give the number of Questions:";
     textElement1.classList.add("text");
     container.appendChild(textElement1);
 
     const xValueElement = document.createElement('p');
-    xValueElement.textContent = "equal to or under 20 ☺ ";
+    xValueElement.textContent = "Equal to or under 20 ☺";
     xValueElement.classList.add("text");
     container.appendChild(xValueElement);
 
@@ -38,7 +38,7 @@ function newgame() {
         const numericInputValue = Number(inputValue);
 
         if (inputValue === "" || isNaN(numericInputValue) || numericInputValue <= 0 || numericInputValue > 20) {
-            textElement2.textContent = "Give A Correct Value";
+            textElement2.textContent = "Give a Correct Value";
         } else {
             textElement2.textContent = "... ☺";
             timeout = setTimeout(function () {
@@ -59,7 +59,7 @@ function createComponent(index, x, score) {
     container.classList.add("container");
 
     const textElement1 = document.createElement('p');
-    textElement1.textContent = `Question N : ${index + 1}`;
+    textElement1.textContent = `Question N: ${index + 1}`;
     textElement1.classList.add("text");
     container.appendChild(textElement1);
 
@@ -88,21 +88,18 @@ function createComponent(index, x, score) {
         const inputValue = event.target.value.trim();
         const numericInputValue = Number(inputValue);
         if (inputValue === "" || isNaN(numericInputValue)) {
-            textElement2.textContent =` ${st} * ${k}`;
+            textElement2.textContent = `${st} * ${k}`;
         } else if (numericInputValue === answer) {
             score += 1;
-            
             textElement2.textContent = "... ☺";
             setTimeout(function () {
-
                 container.remove();
                 createComponent(index + 1, x, score);
-            }, 1500);
-
+            }, 3500);
         } else if (numericInputValue > answer) {
-            textElement2.textContent = "choose a lower number";
+            textElement2.textContent = "Choose a lower number";
         } else {
-            textElement2.textContent = "choose a higher number";
+            textElement2.textContent = "Choose a higher number";
         }
     });
 
@@ -110,7 +107,6 @@ function createComponent(index, x, score) {
 }
 
 function result(score) {
-
     const container = document.createElement("div");
     container.classList.add("container");
 
@@ -120,7 +116,7 @@ function result(score) {
     container.appendChild(textElement1);
 
     const xValueElement = document.createElement('p');
-    xValueElement.textContent = "You're amazing";
+    xValueElement.textContent = `${grade(score)}`;
     xValueElement.classList.add("text");
     container.appendChild(xValueElement);
 
@@ -137,4 +133,39 @@ function result(score) {
     container.appendChild(replayButton);
     document.body.appendChild(container);
 }
+
+function grade(score) {
+    switch (score) {
+        case 0:
+            return "You Lose";
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+            return "Try Harder";
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+            return "Keep Going";
+        case 15:
+        case 16:
+        case 17:
+            return "You're Amazing!";
+        case 18:
+        case 19:
+            return "Excellent!";
+        case 20:
+            return "Perfect!";
+        default:
+            return "Invalid Score";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", newgame);
