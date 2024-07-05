@@ -90,7 +90,7 @@ function createComponent(index, x, score) {
         if (inputValue === "" || isNaN(numericInputValue)) {
             textElement2.textContent = `${st} * ${k}`;
         } else if (numericInputValue === answer) {
-            score += 1;
+            score += Number(20/x);
             textElement2.textContent = "... ☺";
             setTimeout(function () {
                 container.remove();
